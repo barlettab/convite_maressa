@@ -54,11 +54,28 @@
     <div id="p1" class="page active" style="background-image: url('1.png');" onclick="nextPage(2)"></div>
 
     <div id="p2" class="page" style="background-image: url('2.png'); position: relative;">
+        
         <div onclick="window.location.href='https://wa.me/5561995778499'" class="btn-interativo" style="left: 27%; width: 11.5%;"></div>
+        
         <div onclick="nextPage(3)" class="btn-interativo" style="left: 40.5%; width: 7%;"></div>
+        
         <div onclick="nextPage(4)" class="btn-interativo" style="left: 50%; width: 10%;"></div>
+        
         <a href="https://www.google.com/search?q=Espaco+Lumier" target="_blank" class="btn-interativo" style="left: 62.5%; width: 8%;"></a>
     </div>
+    <style>
+        .btn-interativo {
+            position: absolute;
+            /* SUBIDA FINAL: Ajustado para alinhar verticalmente com os desenhos */
+            bottom: 15%;      
+            /* ALTURA: Suficiente para pegar o ícone e o texto logo abaixo */
+            height: 9%;     
+            cursor: pointer;
+            z-index: 9999;   
+            display: block;
+        }
+            a.btn-interativo { text-decoration: none; }
+    </style>
 
     <div id="p3" class="page" style="background-image: url('3.png');">
         <div class="btn-voltar" onclick="nextPage(2)">← Voltar</div>
