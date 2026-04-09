@@ -1,142 +1,221 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convite Maressa Santana</title>
+
     <style>
-        /* Fundo fixo e centralizado */
-        body, html { 
-            margin: 0; padding: 0; width: 100%; height: 100%; 
-            background: #004d5b; 
-            display: flex; justify-content: center; align-items: center;
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: #004d5b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             overflow: hidden;
         }
 
-        /* O container ocupa a tela toda, mas a imagem se adapta */
-        .page-wrap { 
-            display: none; 
-            position: relative;
-            width: 100vw;
-            height: 100vh;
+        .page-wrap {
+            display: none;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
         }
-        
-        .active { display: flex; justify-content: center; align-items: center; }
 
-        /* MUDANÇA AQUI: object-fit: contain garante que a imagem apareça TODA */
+        .active {
+            display: flex;
+        }
+
+        /* Container que mantém a proporção da imagem */
+        .convite-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+
         .img-fullscreen {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain; 
+            width: 100%;
+            height: auto;
             display: block;
         }
 
-        /* Container de botões: Agora ele "gruda" na imagem real, não na tela */
-        .nav-overlay {
+        /* Áreas clicáveis */
+        .area {
             position: absolute;
-            bottom: 0; 
-            width: 100%;
-            max-width: 500px; /* Largura máxima do seu convite no PC */
-            height: 20%; 
-            pointer-events: none;
-        }
-
-        .btn-interativo {
-            position: absolute;
-            bottom: 100%; 
-            height: 50%;
-            pointer-events: auto;
             cursor: pointer;
-            /* background: rgba(255, 0, 0, 0.4); /* Vermelho para teste */
-            /* border: 1px solid red; */
+
+            /* DEBUG VISUAL */
+            /*background: rgba(255, 0, 0, 0.35);
+            /*border: 2px solid red;*/
         }
 
-        /* Container que trava o tamanho da imagem */
-        .img-container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        /* Posições relativas na imagem */
+
+        .confirmacao {
+            left: 18%;
+            top: 78%;
+            width: 14%;
+            height: 12%;
         }
 
-        /* Impede o zoom: a imagem sempre caberá inteira na tela */
-        .img-fullscreen {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+        .dresscode {
+            left: 35%;
+            top: 78%;
+            width: 14%;
+            height: 12%;
         }
 
-        /* Badge Circular Estilo Apple */
+        .lista {
+            left: 52%;
+            top: 78%;
+            width: 14%;
+            height: 12%;
+        }
+
+        .localizacao {
+            left: 69%;
+            top: 78%;
+            width: 14%;
+            height: 12%;
+        }
+
         .btn-voltar-fixo {
             position: absolute;
-            bottom: 20px;
+            bottom: 40=px;
             left: 20px;
             width: 45px;
             height: 45px;
-            
-            /* Design Clean */
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
-            
-            /* Centralização do ícone */
             display: flex;
             justify-content: center;
             align-items: center;
-            
             color: white;
             font-size: 22px;
             font-family: -apple-system, sans-serif;
             cursor: pointer;
             z-index: 100;
-            transition: transform 0.2s;
         }
 
-        .btn-voltar-fixo:active {
-            transform: scale(0.9);
+        @media (max-width: 600px) {
+
+            .btn-voltar-fixo {
+                bottom: 10vh;
+                left: 20px;
+            }
+
         }
     </style>
 </head>
+
 <body>
 
+    <audio id="musicaConvite" loop>
+        <source src="natiruts.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Página 1 -->
+
     <div id="p1" class="page-wrap active">
-        <img src="1.png" class="img-fullscreen" onclick="nextPage(2)">
+
+        <div class="convite-container">
+            <img src="1.png" class="img-fullscreen" onclick="nextPage(2)">
+        </div>
+
     </div>
+
+    <!-- Página 2 -->
 
     <div id="p2" class="page-wrap">
-        <img src="2.png" class="img-fullscreen">
-        <div class="nav-overlay">
-            <div onclick="window.location.href='https://wa.me/5561995778499'" class="btn-interativo" style="left: 20%; width: 12.5%;"></div>
-            <div onclick="nextPage(3)" class="btn-interativo" style="left: 36%; width: 11%;"></div>
-            <div onclick="nextPage(4)" class="btn-interativo" style="left: 51%; width: 12%;"></div>
-            <a href="https://www.google.com/search?q=Espaco+Lumier" target="_blank" class="btn-interativo" style="left: 67%; width: 11%;"></a>
+
+        <div class="convite-container">
+
+            <img src="2.png" class="img-fullscreen">
+
+            <!-- Confirmar presença -->
+            <div class="area confirmacao"
+                onclick="window.location.href='https://wa.me/5561995778499'">
+            </div>
+
+            <!-- Dress code -->
+            <div class="area dresscode"
+                onclick="nextPage(3)">
+            </div>
+
+            <!-- Lista de presentes -->
+            <div class="area lista"
+                onclick="nextPage(4)">
+            </div>
+
+            <!-- Localização -->
+            <div class="area localizacao"
+                onclick="window.open('https://www.google.com/maps/search/Espaco+Lumier')">
+            </div>
+
         </div>
+
+
     </div>
+
+    <!-- Página 3 -->
 
     <div id="p3" class="page-wrap">
-        <div class="img-container">
-            <img src="3.png" class="img-fullscreen">
-            <div class="btn-voltar-fixo" onclick="nextPage(2)">&lt;</div>
+
+        <div class="btn-voltar-fixo" onclick="nextPage(2)">
+            <strong>&lt;</strong>
         </div>
+
+        <div class="convite-container">
+            <img src="3.png" class="img-fullscreen">
+        </div>
+
     </div>
 
+    <!-- Página 4 -->
+
     <div id="p4" class="page-wrap">
-        <div class="img-container">
-            <img src="4.png" class="img-fullscreen">
-            <div class="btn-voltar-fixo" onclick="nextPage(2)">&lt;</div>
+
+        <div class="btn-voltar-fixo" onclick="nextPage(2)">
+            <strong>&lt;</strong>
         </div>
+
+        <div class="convite-container">
+            <img src="4.png" class="img-fullscreen">
+        </div>
+
     </div>
 
     <script>
+
         function nextPage(num) {
-            document.querySelectorAll('.page-wrap').forEach(p => p.classList.remove('active'));
-            const target = document.getElementById('p' + num);
-            if (target) { target.classList.add('active'); }
+
+            const audio = document.getElementById('musicaConvite');
+
+            if (audio) {
+                audio.play().catch(() => {});
+            }
+
+            document
+                .querySelectorAll('.page-wrap')
+                .forEach(p => p.classList.remove('active'));
+
+            document
+                .getElementById('p' + num)
+                .classList.add('active');
+
+            window.scrollTo(0, 0);
         }
+
     </script>
+
 </body>
+
 </html>
